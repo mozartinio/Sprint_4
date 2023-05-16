@@ -1,5 +1,9 @@
 package Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -15,12 +19,14 @@ public class BaseTest {
     private final By cookieButton = By.id("rcc-confirm-button");
     private final String URL = "https://qa-scooter.praktikum-services.ru/";
 
+
     @Before
     public void startUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\mozar\\Desktop\\chromedriver_win32\\chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\mozar\\Desktop\\chromedriver_win32\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
-//        System.setProperty("webdriver.gecko.driver", "C:\Users\mozar\Desktop\geckodriver-v0.33.0-win32\\geckodriver.exe");
+//        FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
 //        driver = new FirefoxDriver();
 
         //открыть страницу Яндекс.Самокаты
